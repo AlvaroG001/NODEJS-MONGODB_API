@@ -14,7 +14,6 @@ router.post('/reuniones', async (req, res) => {
   }
 });
 
-
 // Ruta para obtener todas las reuniones o todas las reuniones por un comunity_id específico
 // Para obtener todas las reuniones: GET http://localhost:3000/reuniones
 // Para obtener reuniones por un comunity_id específico: 
@@ -31,7 +30,6 @@ router.get('/reuniones', async (req, res) => {
     res.status(500).json({ message: error.message });
   }
 });
-
 
 // Eliminar una reunion
 router.delete('/reuniones/:id', async (req, res) => {

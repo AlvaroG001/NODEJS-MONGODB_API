@@ -3,7 +3,7 @@ const userSchema = require("../models/user");
 
 const router = express.Router();
 
-// create user
+// Crear usuario
 router.post('/users', (req, res) => {
     const user = userSchema(req.body); //Crea un usuario
 
@@ -13,7 +13,7 @@ router.post('/users', (req, res) => {
         .catch((error) => res.json({ message: error })) 
 });
 
-// get all users
+// Obtener todos los usuarios
 router.get('/users', (req, res) => {
     userSchema
         .find() //Busco todos los usuarios en mongodb
@@ -21,7 +21,7 @@ router.get('/users', (req, res) => {
         .catch((error) => res.json({ message: error })) 
 });
 
-// get user by id
+// Obtener usuario por el id
 router.get('/users/:id', (req, res) => {
     const { id } = req.params;
     userSchema
@@ -30,7 +30,7 @@ router.get('/users/:id', (req, res) => {
         .catch((error) => res.json({ message: error })) 
 });
 
-// update a users
+// Actualizar usuario
 router.put('/users/:id', (req, res) => {
     const { id } = req.params;
     const { name, age, email } = req.body;
@@ -40,7 +40,7 @@ router.put('/users/:id', (req, res) => {
         .catch((error) => res.json({ message: error })) 
 });
 
-// delete a users
+// Eliminar usuario
 router.delete('/users/:id', (req, res) => {
     const { id } = req.params;
     userSchema
@@ -57,16 +57,13 @@ router.post('/users/auth', (req, res) => {
     userSchema.findOne({ email: email })
         .then(user => {
             if (user) {
-                // Comprueba si las contraseñas coinciden (comparación directa, NO SEGURA para producción)
+                // Comprueba si las contraseñas coinciden (comparación directa)
                 if (password === user.password) {
-                    // Si las contraseñas coinciden
                     res.json(user);
                 } else {
-                    // Si las contraseñas no coinciden
                     res.status(401).json({ message: "Auth failed" });
                 }
             } else {
-                // Si no se encuentra el usuario
                 res.status(404).json({ message: "User not found" });
             }
         })
