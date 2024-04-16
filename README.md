@@ -19,7 +19,7 @@ Este proyecto requiere [Node.js](https://nodejs.org/) y [MongoDB](https://www.mo
 
 1. **Clona el repositorio**:  
     ```
-    git clone https://github.com/tuUsuario/NODEJS-MONGODB_API.git
+    git clone https://github.com/AlvaroG001/NODEJS-MONGODB_API.git
     ```
 2. **Instala las dependencias**: Navega al directorio del proyecto y ejecuta:
     ```
